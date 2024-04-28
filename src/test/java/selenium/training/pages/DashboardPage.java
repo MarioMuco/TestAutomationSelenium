@@ -2,27 +2,42 @@ package selenium.training.pages;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import selenium.training.utils.Driver;
+import selenium.training.utils.GlobalConfigs;
+
+import static selenium.training.pages.LoginPage.navigateToLoginPage;
+import selenium.training.pages.LoginPage;
 
 public class DashboardPage extends BasePage {
+    Actions actions = new Actions(Driver.getDriver());
 
-    @FindBy(css = ".oxd-topbar-header-userarea ul[class='oxd-dropdown-menu'] li:nth-child(4)")
-    public WebElement logoutButtonWebElement;
+    @FindBy(linkText = "Computers")
+    public WebElement computers;
 
-    @FindBy(css = ".oxd-topbar-header-userarea .oxd-userdropdown-icon")
-    public WebElement openProfileWebElement;
+    @FindBy(linkText = "Notebooks")
+    public WebElement notebooks;
 
-    @FindBy(css = "a[href='/web/index.php/pim/viewPimModule']")
-    public WebElement pimTabWebElement;
+    @FindBy(css = "button.button-2.add-to-wishlist-button:nth-of-type(2)")
+    public WebElement wishlistButton2;
 
-    public void logout() {
-        openProfileWebElement.click();
-        logoutButtonWebElement.click();
-        Assertions.assertTrue(Driver.getDriver().getCurrentUrl().endsWith("/auth/login"));
+    @FindBy(css = "button.button-2.add-to-wishlist-button:nth-of-type(3)")
+    public WebElement wishlistButton3;
+
+
+
+    public void navigateNotebooks() {
+        actions.moveToElement(computers).perform();
+        notebooks.click();
     }
 
-    public void clickPIMTab() {
-        pimTabWebElement.click();
+    public void addWishlist() {
+        wishlistButton2.click();
+
+
+        wishlistButton3.click();
+
     }
+
 }
