@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.training.enums.BrowserType;
 
 import java.time.Duration;
@@ -14,9 +16,14 @@ import java.time.Duration;
 public class Driver {
 
     private static WebDriver driver = initDriver(BrowserType.CHROME);
+    private static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     public static WebDriver getDriver() {
         return driver;
+    }
+
+    public static WebDriverWait getWait() {
+        return wait;
     }
 
     private static WebDriver initDriver(BrowserType type) {
@@ -44,4 +51,6 @@ public class Driver {
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         return driver;
     }
+
+
 }
