@@ -79,6 +79,12 @@ public class DashboardPage extends BasePage {
         }
         shoppingButton6.click();
         Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
+        try {
+            Thread.sleep(1000); // 1000 milliseconds = 1 second
+        } catch (InterruptedException e) {
+            // Handle interruption exception
+            e.printStackTrace();
+        }
     }
 
 }

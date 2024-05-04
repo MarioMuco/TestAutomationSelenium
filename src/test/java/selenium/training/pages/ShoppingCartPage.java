@@ -11,14 +11,21 @@ import selenium.training.utils.GlobalConfigs;
 import static selenium.training.pages.LoginPage.navigateToLoginPage;
 import selenium.training.pages.LoginPage;
 
-public class ShoppingCartPage {
+public class ShoppingCartPage extends BasePage{
     Actions actions = new Actions(Driver.getDriver());
 
-    @FindBy(css = "span.wishlist-qty")
+    @FindBy(css = ".cart-label")
     private WebElement cart;
 
-    @FindBy(css = ".button-1 .cart-button")
+    @FindBy(css = ".cart-button")
     private WebElement gotocart;
+
+    @FindBy(id = "termsofservice")
+    private WebElement checkbox;
+
+    @FindBy(id = "checkout")
+    private WebElement checkout;
+
 
 
     public void navigateShoppingCart() {
@@ -26,6 +33,10 @@ public class ShoppingCartPage {
         gotocart.click();
     }
 
+    public void checkoutDone(){
+        checkbox.click();
+        checkout.click();
+    }
 
 
 }

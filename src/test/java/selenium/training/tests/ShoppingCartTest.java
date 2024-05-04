@@ -1,5 +1,6 @@
 package selenium.training.tests;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,7 +36,41 @@ public class ShoppingCartTest {
 
         shoppingCartPage.navigateShoppingCart();
 
+        String expectedUrl = "https://demo.nopcommerce.com/cart";
+        String currentUrl = Driver.getDriver().getCurrentUrl();
+        Assertions.assertEquals(expectedUrl, currentUrl);
     }
+
+    @Test
+    public void totali(){
+        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
+        dashboardPage.navigateNotebooks();
+        dashboardPage.addShopping();
+
+        shoppingCartPage.navigateShoppingCart();
+
+        String price1 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,350.00')]")).getText().replace("$", "").replace(",", "");
+        String price2 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,360.00')]")).getText().replace("$", "").replace(",", "");
+        String price3 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,590.00')]")).getText().replace("$", "").replace(",", "");
+
+        float currentTotal = Float.parseFloat(price1) + Float.parseFloat(price2) + Float.parseFloat(price3);
+        WebElement expectedTotal = Driver.getDriver().findElement(By.cssSelector(".cart-total-right"));
+
+        Assertions.assertEquals(Float.parseFloat(expectedTotal.getText().replace("$", "").replace(",", "").replace(",", "")), currentTotal);
+
+    }
+
+    @Test
+    public void checkoutComplete(){
+        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
+        dashboardPage.navigateNotebooks();
+        dashboardPage.addShopping();
+        shoppingCartPage.navigateShoppingCart();
+
+        shoppingCartPage.checkoutDone();
+
+    }
+
 
 
 
