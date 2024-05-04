@@ -16,7 +16,7 @@ import java.time.Duration;
 public class Driver {
 
     private static WebDriver driver = initDriver(BrowserType.CHROME);
-    private static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    private static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
     public static WebDriver getDriver() {
         return driver;

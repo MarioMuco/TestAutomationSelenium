@@ -1,8 +1,10 @@
 package selenium.training.tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -35,7 +37,14 @@ public class DashboardTest {
         dashboardPage.navigateNotebooks();
         dashboardPage.addWishlist();
 
-        WebElement numriWishlist = Driver.getWait().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.wishlist-qty")));
+        Driver.getWait().until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                WebElement wishlistElement = driver.findElement(By.cssSelector("span.wishlist-qty"));
+                return wishlistElement.getText().equals("(2)");
+            }
+        });
+
+        WebElement numriWishlist = Driver.getDriver().findElement(By.cssSelector("span.wishlist-qty"));
         Assert.assertEquals(numriWishlist.getText(),"(2)");
     }
 
@@ -45,8 +54,19 @@ public class DashboardTest {
         dashboardPage.navigateNotebooks();
         dashboardPage.addShopping();
 
-        WebElement numriShopping = Driver.getWait().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.cart-qty")));
+        Driver.getWait().until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                WebElement shoppingElement = driver.findElement(By.cssSelector("span.cart-qty"));
+                return shoppingElement.getText().equals("(3)");
+            }
+        });
+
+        WebElement numriShopping = Driver.getDriver().findElement(By.cssSelector("span.cart-qty"));
         Assert.assertEquals(numriShopping.getText(),"(3)");
     }
+
+
+
+
 
 }

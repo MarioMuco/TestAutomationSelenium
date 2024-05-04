@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import selenium.training.utils.Driver;
 import selenium.training.utils.GlobalConfigs;
 
@@ -28,15 +29,14 @@ public class DashboardPage extends BasePage {
     @FindBy(css = "span.close")
     public WebElement close;
 
-    @FindBy(css = ".item-grid .item-box:nth-child(4) .product-box-add-to-cart-button")
+    @FindBy(css = ".item-grid .item-box:nth-child(4) .button-2.product-box-add-to-cart-button")
     public WebElement shoppingButton4;
 
-    @FindBy(css = ".item-grid .item-box:nth-child(5) .product-box-add-to-cart-button")
+    @FindBy(css = ".item-grid .item-box:nth-child(5) .button-2.product-box-add-to-cart-button")
     public WebElement shoppingButton5;
 
-    @FindBy(css = ".item-grid .item-box:nth-child(6) .product-box-add-to-cart-button")
+    @FindBy(css = ".item-grid .item-box:nth-child(6) .button-2.product-box-add-to-cart-button")
     public WebElement shoppingButton6;
-
 
 
 
@@ -49,18 +49,36 @@ public class DashboardPage extends BasePage {
 
     public void addWishlist() {
         wishlistButton2.click();
-        close.click();
+        Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
+        try {
+            Thread.sleep(1000); // 1000 milliseconds = 1 second
+        } catch (InterruptedException e) {
+            // Handle interruption exception
+            e.printStackTrace();
+        }
         wishlistButton3.click();
-        close.click();
+        Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
     }
 
     public void addShopping(){
         shoppingButton4.click();
-        //duhen async wait pas cdo click
-        close.click();
+        Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
+        try {
+            Thread.sleep(1000); // 1000 milliseconds = 1 second
+        } catch (InterruptedException e) {
+            // Handle interruption exception
+            e.printStackTrace();
+        }
         shoppingButton5.click();
-        close.click();
+        Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
+        try {
+            Thread.sleep(1000); // 1000 milliseconds = 1 second
+        } catch (InterruptedException e) {
+            // Handle interruption exception
+            e.printStackTrace();
+        }
         shoppingButton6.click();
+        Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
     }
 
 }
