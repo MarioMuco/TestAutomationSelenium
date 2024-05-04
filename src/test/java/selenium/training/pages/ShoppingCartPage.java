@@ -27,7 +27,6 @@ public class ShoppingCartPage extends BasePage{
     private WebElement checkout;
 
 
-
     public void navigateShoppingCart() {
         actions.moveToElement(cart).perform();
         gotocart.click();

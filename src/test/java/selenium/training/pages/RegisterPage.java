@@ -46,12 +46,12 @@ public class RegisterPage extends BasePage{
     private WebElement register_button;
 
 
-    public  void register(String email, String password){
+    public  void register(String email, String password, String firstName, String lastName){
         navigateToRegisterPage();
         registerButton.click();
         gender_radio.click();
-        name_input.sendKeys("Mario");
-        lastname_input.sendKeys("Muco");
+        name_input.sendKeys(firstName);
+        lastname_input.sendKeys(lastName);
         day_input.sendKeys("30");
         month_input.sendKeys("March");
         year_input.sendKeys("2002");

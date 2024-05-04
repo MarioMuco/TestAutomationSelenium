@@ -69,6 +69,13 @@ public class ShoppingCartTest {
 
         shoppingCartPage.checkoutDone();
 
+        WebElement emaili = Driver.getDriver().findElement(By.id("BillingNewAddress_Email"));
+        WebElement emri = Driver.getDriver().findElement(By.id("BillingNewAddress_FirstName"));
+        WebElement mbiemri = Driver.getDriver().findElement(By.id("BillingNewAddress_LastName"));
+
+        Assertions.assertEquals(GlobalConfigs.username,emaili.getAttribute("value"));
+        Assertions.assertEquals(GlobalConfigs.firstName,emri.getAttribute("value"));
+        Assertions.assertEquals(GlobalConfigs.lastName,mbiemri.getAttribute("value"));
     }
 
 

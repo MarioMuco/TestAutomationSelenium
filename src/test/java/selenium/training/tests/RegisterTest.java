@@ -30,7 +30,7 @@ public class RegisterTest {
 
     @Test
     public void successfulRegisterTest() {
-        registerPage.register(GlobalConfigs.username, GlobalConfigs.password);
+        registerPage.register(GlobalConfigs.username, GlobalConfigs.password, GlobalConfigs.firstName, GlobalConfigs.lastName);
         WebElement success_result = Driver.getDriver().findElement(By.className("result"));
         Assert.assertEquals("Your registration completed",success_result.getText());
     }
