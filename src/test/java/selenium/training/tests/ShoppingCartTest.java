@@ -41,6 +41,8 @@ public class ShoppingCartTest {
         Assertions.assertEquals(expectedUrl, currentUrl);
     }
 
+
+    WebElement expectedTotal = Driver.getDriver().findElement(By.cssSelector(".cart-total-right"));
     @Test
     public void totali(){
         loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
@@ -54,7 +56,6 @@ public class ShoppingCartTest {
         String price3 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,590.00')]")).getText().replace("$", "").replace(",", "");
 
         float currentTotal = Float.parseFloat(price1) + Float.parseFloat(price2) + Float.parseFloat(price3);
-        WebElement expectedTotal = Driver.getDriver().findElement(By.cssSelector(".cart-total-right"));
 
         Assertions.assertEquals(Float.parseFloat(expectedTotal.getText().replace("$", "").replace(",", "").replace(",", "")), currentTotal);
 
@@ -76,6 +77,25 @@ public class ShoppingCartTest {
         Assertions.assertEquals(GlobalConfigs.username,emaili.getAttribute("value"));
         Assertions.assertEquals(GlobalConfigs.firstName,emri.getAttribute("value"));
         Assertions.assertEquals(GlobalConfigs.lastName,mbiemri.getAttribute("value"));
+    }
+
+
+    @Test
+    public void shippingAdress(){
+        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
+        dashboardPage.navigateNotebooks();
+        dashboardPage.addShopping();
+        shoppingCartPage.navigateShoppingCart();
+        shoppingCartPage.checkoutDone();
+
+        shoppingCartPage.shippingDone();
+
+        WebElement currentTotal = Driver.getDriver().findElement(By.cssSelector(".cart-total-right"));
+
+        Assertions.assertEquals(Float.parseFloat(expectedTotal.getText().replace("$", "").replace(",", "")), currentTotal.getText().replace("$", "").replace(",", ""));
+
+        WebElement confirmButton = Driver.getDriver().findElement(By.xpath("//button[@class='button-1 confirm-order-next-step-button']"));
+        confirmButton.click();
     }
 
 

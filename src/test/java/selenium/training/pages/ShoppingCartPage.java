@@ -1,10 +1,12 @@
 package selenium.training.pages;
 
+import org.checkerframework.checker.signature.qual.FieldDescriptor;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import selenium.training.utils.Driver;
 import selenium.training.utils.GlobalConfigs;
 
@@ -13,6 +15,7 @@ import selenium.training.pages.LoginPage;
 
 public class ShoppingCartPage extends BasePage{
     Actions actions = new Actions(Driver.getDriver());
+
 
     @FindBy(css = ".cart-label")
     private WebElement cart;
@@ -27,6 +30,42 @@ public class ShoppingCartPage extends BasePage{
     private WebElement checkout;
 
 
+
+    @FindBy(id = "BillingNewAddress_CountryId")
+    private WebElement shteti;
+
+    @FindBy(xpath = "//select[@id='BillingNewAddress_CountryId']/option[@value='212']")
+    private WebElement shqiperia;
+
+    @FindBy(id = "BillingNewAddress_City")
+    private  WebElement qyteti;
+
+    @FindBy(id = "BillingNewAddress_Address1")
+    private  WebElement adresa;
+
+    @FindBy(id = "BillingNewAddress_ZipPostalCode")
+    private  WebElement zipcode;
+
+    @FindBy(id = "BillingNewAddress_PhoneNumber")
+    private  WebElement numri;
+
+    @FindBy(name = "save")
+    private  WebElement butoni;
+
+    @FindBy(id = "shippingoption_1")
+    private WebElement shippingtype;
+
+    @FindBy(xpath = "//button[@class='button-1 shipping-method-next-step-button' and text()='Continue']")
+    private WebElement vazhdo;
+
+    @FindBy(xpath = "//button[@class='button-1 payment-method-next-step-button']")
+    private WebElement vazhdopayment;
+
+    @FindBy(xpath = "//button[@class='button-1 payment-info-next-step-button']")
+    private WebElement vazhdopayment1;
+
+
+
     public void navigateShoppingCart() {
         actions.moveToElement(cart).perform();
         gotocart.click();
@@ -35,6 +74,20 @@ public class ShoppingCartPage extends BasePage{
     public void checkoutDone(){
         checkbox.click();
         checkout.click();
+    }
+
+    public void shippingDone(){
+        shteti.click();
+        shqiperia.click();
+        qyteti.sendKeys("Tirana");
+        adresa.sendKeys("Tirana");
+        zipcode.sendKeys("1001");
+        numri.sendKeys("0000000000");
+        butoni.click();
+        shippingtype.click();
+        vazhdo.click();
+        vazhdopayment.click();
+        vazhdopayment1.click();
     }
 
 
