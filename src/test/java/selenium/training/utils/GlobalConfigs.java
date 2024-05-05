@@ -1,6 +1,5 @@
 package selenium.training.utils;
 
-import java.security.PublicKey;
 
 public class GlobalConfigs {
 

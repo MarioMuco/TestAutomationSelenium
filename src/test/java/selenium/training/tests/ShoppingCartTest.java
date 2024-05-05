@@ -2,12 +2,7 @@ package selenium.training.tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import selenium.training.pages.DashboardPage;
 import selenium.training.pages.LoginPage;
@@ -92,7 +87,7 @@ public class ShoppingCartTest {
 
         WebElement currentTotal = Driver.getDriver().findElement(By.cssSelector(".cart-total-right"));
 
-        Assertions.assertEquals(Float.parseFloat(expectedTotal.getText().replace("$", "").replace(",", "")), currentTotal.getText().replace("$", "").replace(",", ""));
+        Assertions.assertEquals(Float.parseFloat(expectedTotal.getText().replace("$", "").replace(",", "")), Float.parseFloat(currentTotal.getText().replace("$", "").replace(",", "")));
 
         WebElement confirmButton = Driver.getDriver().findElement(By.xpath("//button[@class='button-1 confirm-order-next-step-button']"));
         confirmButton.click();

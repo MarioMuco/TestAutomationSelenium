@@ -1,17 +1,10 @@
 package selenium.training.pages;
 
-import org.checkerframework.checker.signature.qual.FieldDescriptor;
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import selenium.training.utils.Driver;
-import selenium.training.utils.GlobalConfigs;
 
-import static selenium.training.pages.LoginPage.navigateToLoginPage;
-import selenium.training.pages.LoginPage;
 
 public class ShoppingCartPage extends BasePage{
     Actions actions = new Actions(Driver.getDriver());

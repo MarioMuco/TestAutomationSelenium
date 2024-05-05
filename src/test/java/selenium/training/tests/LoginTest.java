@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import selenium.training.pages.LoginPage;
-import selenium.training.pages.RegisterPage;
 import selenium.training.utils.Driver;
 import selenium.training.utils.GlobalConfigs;
 
