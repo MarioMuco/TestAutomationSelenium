@@ -1,8 +1,11 @@
-# Detyrë Kursi : Ndërtimi i një Test Automation – framework duke përdorur Selenium dhe Java
+# Test Automation – framework using Selenium and Java
  
-## Lënda : Teknologjia e Testimit të Aplikacioneve 
+- Organized using Page Object Model (POM) structure
+- Using asserts to do the verifications asked in different steps
+- Using wait methods (trying to avoid thread.sleep)
+- Configured Screenshot Capture on failure
 
-### Test 1: Register Test
+## Test 1: Register Test
 - Navigate to : https://demo.nopcommerce.com/
 - Click LogIn - Menu
 - Click Register - button
@@ -10,7 +13,7 @@
 - Fill the register form as below:
 - Verify that register is success
 
-### Test 2: Login Test
+## Test 2: Login Test
 - Navigate to : https://demo.nopcommerce.com/
 - Click LogIn - Menu
 - Login with the credentials created from Test 1
@@ -19,7 +22,7 @@
  Log out - Menu is displayed 
 - Log out
 
-### Test 3: Dashboard Test 
+## Test 3: Dashboard Test 
 - Precondition: Log in nopCommerce Application
 - Hover over Computers Menu
 - Click Notebooks
@@ -32,7 +35,7 @@
 - Verify that Shopping Cart on Menu bar displays 3
 - Close the browser
 
-### Test 4: Shopping Cart Test 
+## Test 4: Shopping Cart Test 
 - Precondition: Test 3
 - Hover over Shopping Cart – Menu
 - Verify that ‘Go To Cart’ – button is displayed
