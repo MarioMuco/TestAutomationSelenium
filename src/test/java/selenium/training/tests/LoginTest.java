@@ -24,8 +24,6 @@ public class LoginTest {
         Assert.assertEquals("Welcome to our store",welcome_msg.getText());
         WebElement logout = Driver.getDriver().findElement(By.xpath("//a[@class='ico-logout']"));
         Assert.assertEquals("Log out",logout.getText());
-        logout.click();
-
     }
 
 

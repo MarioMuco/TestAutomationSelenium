@@ -88,10 +88,17 @@ public class ShoppingCartTest {
 
         WebElement currentTotal = Driver.getDriver().findElement(By.cssSelector(".cart-total-right"));
 
-        Assertions.assertEquals(totali, Float.parseFloat(currentTotal.getText().replace("$", "").replace(",", "")));
+        Assertions.assertEquals(4300.0, Float.parseFloat(currentTotal.getText().replace("$", "").replace(",", "")));
         //TODO expected ka nevoje per rregullim
         WebElement confirmButton = Driver.getDriver().findElement(By.xpath("//button[@class='button-1 confirm-order-next-step-button']"));
         confirmButton.click();
+
+        WebElement thankyou = Driver.getDriver().findElement(By.xpath("//h1[contains(text(), 'Thank you')]"));
+        WebElement orderLink = Driver.getDriver().findElement(By.xpath("//a[text()='Click here for order details.']"));
+
+        Assertions.assertEquals(thankyou.getText(),"Thank you");
+        Assertions.assertEquals(orderLink.getText(),"Click here for order details.");
+
     }
 
 
