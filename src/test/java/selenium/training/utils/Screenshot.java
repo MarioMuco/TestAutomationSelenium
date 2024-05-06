@@ -20,3 +20,7 @@ public class Screenshot {
         FileUtils.copyFile(src, new File("test-output\\failure_screenshots\\TestFail_"+currentDate+"_"+failedMethodName+".png"));
     }
 }
+
+
+
+
