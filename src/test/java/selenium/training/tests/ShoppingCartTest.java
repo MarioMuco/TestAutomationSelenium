@@ -27,10 +27,6 @@ public class ShoppingCartTest {
 
     @Test
     public void gotocart(){
-        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
-        dashboardPage.navigateNotebooks();
-        dashboardPage.addShopping();
-
         shoppingCartPage.navigateShoppingCart();
 
         String expectedUrl = "https://demo.nopcommerce.com/cart";
@@ -40,12 +36,6 @@ public class ShoppingCartTest {
 
     @Test
     public void totali(){
-        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
-        dashboardPage.navigateNotebooks();
-        dashboardPage.addShopping();
-
-        shoppingCartPage.navigateShoppingCart();
-
         String price1 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,350.00')]")).getText().replace("$", "").replace(",", "");
         String price2 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,360.00')]")).getText().replace("$", "").replace(",", "");
         String price3 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,590.00')]")).getText().replace("$", "").replace(",", "");
@@ -60,11 +50,6 @@ public class ShoppingCartTest {
 
     @Test
     public void checkoutComplete(){
-        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
-        dashboardPage.navigateNotebooks();
-        dashboardPage.addShopping();
-        shoppingCartPage.navigateShoppingCart();
-
         shoppingCartPage.checkoutDone();
 
         WebElement emaili = Driver.getDriver().findElement(By.id("BillingNewAddress_Email"));
@@ -78,18 +63,12 @@ public class ShoppingCartTest {
 
     @Test
     public void shippingAdress(){
-        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
-        dashboardPage.navigateNotebooks();
-        dashboardPage.addShopping();
-        shoppingCartPage.navigateShoppingCart();
-        shoppingCartPage.checkoutDone();
-
         shoppingCartPage.shippingDone();
 
         WebElement currentTotal = Driver.getDriver().findElement(By.cssSelector(".cart-total-right"));
 
         Assertions.assertEquals(4300.0, Float.parseFloat(currentTotal.getText().replace("$", "").replace(",", "")));
-        //TODO expected ka nevoje per rregullim
+
         WebElement confirmButton = Driver.getDriver().findElement(By.xpath("//button[@class='button-1 confirm-order-next-step-button']"));
         confirmButton.click();
 

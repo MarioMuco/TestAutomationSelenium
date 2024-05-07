@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import selenium.training.utils.Driver;
 
-
 public class DashboardPage extends BasePage {
     Actions actions = new Actions(Driver.getDriver());
 

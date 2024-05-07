@@ -31,8 +31,6 @@ public class DashboardTest {
 
     @Test
     public void addWishlist() {
-        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
-        dashboardPage.navigateNotebooks();
         dashboardPage.addWishlist();
 
         Driver.getWait().until(new ExpectedCondition<Boolean>() {
