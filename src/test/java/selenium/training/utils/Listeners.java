@@ -1,5 +1,6 @@
 package selenium.training.utils;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -20,12 +21,8 @@ public class Listeners implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        //get screenshot
-        try {
-            Screenshot.getScreenshot(iTestResult.getName());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        WebDriver driver = Driver.getDriver();
+        Screenshot.getScreenshot(driver, iTestResult.getName());
     }
 
     @Override

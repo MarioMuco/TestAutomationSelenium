@@ -25,8 +25,10 @@ public class ShoppingCartTest {
     }
 
 
-    @Test
+    @Test(priority = 1)
     public void gotocart(){
+        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
+        dashboardPage.navigateNotebooks();
         shoppingCartPage.navigateShoppingCart();
 
         String expectedUrl = "https://demo.nopcommerce.com/cart";
@@ -34,7 +36,7 @@ public class ShoppingCartTest {
         Assertions.assertEquals(expectedUrl, currentUrl);
     }
 
-    @Test
+    @Test(priority = 2)
     public void totali(){
         String price1 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,350.00')]")).getText().replace("$", "").replace(",", "");
         String price2 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,360.00')]")).getText().replace("$", "").replace(",", "");
@@ -48,7 +50,7 @@ public class ShoppingCartTest {
 
     }
 
-    @Test
+    @Test(priority = 3)
     public void checkoutComplete(){
         shoppingCartPage.checkoutDone();
 
@@ -61,7 +63,7 @@ public class ShoppingCartTest {
         Assertions.assertEquals(GlobalConfigs.lastName,mbiemri.getAttribute("value"));
     }
 
-    @Test
+    @Test(priority = 4)
     public void shippingAdress(){
         shoppingCartPage.shippingDone();
 

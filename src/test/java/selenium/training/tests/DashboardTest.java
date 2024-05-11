@@ -20,7 +20,7 @@ public class DashboardTest {
         loginPage = new LoginPage();
     }
 
-    @Test
+    @Test(priority = 1)
     public void successfulNotebooks() {
         loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
         dashboardPage.navigateNotebooks();
@@ -29,7 +29,7 @@ public class DashboardTest {
         Assert.assertEquals(notebookConfirm.getText(),"Notebooks");
     }
 
-    @Test
+    @Test(priority = 2)
     public void addWishlist() {
         dashboardPage.addWishlist();
 
@@ -44,10 +44,8 @@ public class DashboardTest {
         Assert.assertEquals(numriWishlist.getText(),"(2)");
     }
 
-    @Test
+    @Test(priority = 3)
     public void addShoppinglist() {
-        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
-        dashboardPage.navigateNotebooks();
         dashboardPage.addShopping();
 
         Driver.getWait().until(new ExpectedCondition<Boolean>() {
