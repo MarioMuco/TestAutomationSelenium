@@ -55,6 +55,12 @@ public class ShoppingCartPage extends BasePage{
     @FindBy(xpath = "//button[@class='button-1 payment-info-next-step-button']")
     private WebElement vazhdopayment1;
 
+    @FindBy(name = "continueshopping")
+    private WebElement continueShopping;
+
+    @FindBy(id = "open-estimate-shipping-popup")
+    private WebElement estimateShipping;
+
 
 
     public void navigateShoppingCart() {
@@ -79,6 +85,14 @@ public class ShoppingCartPage extends BasePage{
         vazhdo.click();
         vazhdopayment.click();
         vazhdopayment1.click();
+    }
+
+    public boolean continueShoppingButtonIsDisplayed() {
+        return continueShopping.isDisplayed();
+    }
+
+    public boolean estimateShippingButtonIsDisplayed() {
+        return estimateShipping.isDisplayed();
     }
 
 

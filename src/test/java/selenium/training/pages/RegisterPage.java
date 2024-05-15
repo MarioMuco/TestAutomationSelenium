@@ -48,6 +48,7 @@ public class RegisterPage extends BasePage{
     public  void register(String email, String password, String firstName, String lastName){
         navigateToRegisterPage();
         registerButton.click();
+        System.out.println(Driver.getDriver().getTitle());
         gender_radio.click();
         name_input.sendKeys(firstName);
         lastname_input.sendKeys(lastName);

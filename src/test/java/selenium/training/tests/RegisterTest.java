@@ -1,6 +1,7 @@
 package selenium.training.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import selenium.training.pages.RegisterPage;
 import selenium.training.utils.Driver;
@@ -26,5 +27,9 @@ public class RegisterTest {
         logout.click();
     }
 
+    @AfterTest
+    public void closeRegister(){
+        Driver.getDriver().close();
+    }
 
 }

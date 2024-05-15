@@ -1,10 +1,12 @@
 package selenium.training.tests;
 
+import org.junit.jupiter.api.AfterAll;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import selenium.training.pages.DashboardPage;
 import selenium.training.pages.LoginPage;
@@ -30,36 +32,25 @@ public class DashboardTest {
     }
 
     @Test(priority = 2)
-    public void addWishlist() {
+    public void addWishlist() throws InterruptedException {
         dashboardPage.addWishlist();
-
-        Driver.getWait().until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                WebElement wishlistElement = driver.findElement(By.cssSelector("span.wishlist-qty"));
-                return wishlistElement.getText().equals("(2)");
-            }
-        });
 
         WebElement numriWishlist = Driver.getDriver().findElement(By.cssSelector("span.wishlist-qty"));
         Assert.assertEquals(numriWishlist.getText(),"(2)");
     }
 
     @Test(priority = 3)
-    public void addShoppinglist() {
+    public void addShoppinglist() throws InterruptedException {
         dashboardPage.addShopping();
-
-        Driver.getWait().until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                WebElement shoppingElement = driver.findElement(By.cssSelector("span.cart-qty"));
-                return shoppingElement.getText().equals("(3)");
-            }
-        });
 
         WebElement numriShopping = Driver.getDriver().findElement(By.cssSelector("span.cart-qty"));
         Assert.assertEquals(numriShopping.getText(),"(3)");
     }
 
-
+    @AfterTest
+    public void closeDashboard(){
+        Driver.getDriver().close();
+    }
 
 
 

@@ -3,6 +3,7 @@ package selenium.training.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import selenium.training.pages.LoginPage;
 import selenium.training.utils.Driver;
@@ -26,6 +27,9 @@ public class LoginTest {
         Assert.assertEquals("Log out",logout.getText());
     }
 
-
+    @AfterTest
+    public void closeRegister(){
+        Driver.getDriver().close();
+    }
 
 }

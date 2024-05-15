@@ -3,6 +3,7 @@ package selenium.training.tests;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import selenium.training.pages.DashboardPage;
 import selenium.training.pages.LoginPage;
@@ -34,20 +35,23 @@ public class ShoppingCartTest {
         String expectedUrl = "https://demo.nopcommerce.com/cart";
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assertions.assertEquals(expectedUrl, currentUrl);
+
+        Assertions.assertTrue(shoppingCartPage.continueShoppingButtonIsDisplayed() && shoppingCartPage.estimateShippingButtonIsDisplayed());
     }
 
     @Test(priority = 2)
-    public void totali(){
+    public void totali() throws InterruptedException {
+        Thread.sleep(2000);
         String price1 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,350.00')]")).getText().replace("$", "").replace(",", "");
         String price2 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,360.00')]")).getText().replace("$", "").replace(",", "");
         String price3 = Driver.getDriver().findElement(By.xpath("//td[contains(span/text(), '$1,590.00')]")).getText().replace("$", "").replace(",", "");
 
         float currentTotal = Float.parseFloat(price1) + Float.parseFloat(price2) + Float.parseFloat(price3);
         totali = currentTotal;
+        Thread.sleep(1000);
         WebElement expectedTotal = Driver.getDriver().findElement(By.cssSelector(".cart-total-right"));
 
         Assertions.assertEquals(Float.parseFloat(expectedTotal.getText().replace("$", "").replace(",", "").replace(",", "")), currentTotal);
-
     }
 
     @Test(priority = 3)
@@ -69,7 +73,7 @@ public class ShoppingCartTest {
 
         WebElement currentTotal = Driver.getDriver().findElement(By.cssSelector(".cart-total-right"));
 
-        Assertions.assertEquals(4300.0, Float.parseFloat(currentTotal.getText().replace("$", "").replace(",", "")));
+        Assertions.assertEquals(totali, Float.parseFloat(currentTotal.getText().replace("$", "").replace(",", "")));
 
         WebElement confirmButton = Driver.getDriver().findElement(By.xpath("//button[@class='button-1 confirm-order-next-step-button']"));
         confirmButton.click();
@@ -80,6 +84,11 @@ public class ShoppingCartTest {
         Assertions.assertEquals(thankyou.getText(),"Thank you");
         Assertions.assertEquals(orderLink.getText(),"Click here for order details.");
 
+    }
+
+    @AfterTest
+    public void closeDashboard(){
+        Driver.getDriver().close();
     }
 
 

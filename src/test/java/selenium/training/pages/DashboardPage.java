@@ -40,40 +40,24 @@ public class DashboardPage extends BasePage {
         notebooks.click();
     }
 
-    public void addWishlist() {
+    public void addWishlist() throws InterruptedException {
         wishlistButton2.click();
         Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(1000);
         wishlistButton3.click();
         Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
     }
 
-    public void addShopping(){
+    public void addShopping() throws InterruptedException {
         shoppingButton4.click();
         Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         shoppingButton5.click();
         Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
         shoppingButton6.click();
         Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(2000);
     }
 
 }
