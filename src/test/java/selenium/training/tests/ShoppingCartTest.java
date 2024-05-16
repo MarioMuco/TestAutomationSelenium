@@ -11,6 +11,10 @@ import selenium.training.pages.ShoppingCartPage;
 import selenium.training.utils.Driver;
 import selenium.training.utils.GlobalConfigs;
 
+import java.util.regex.Pattern;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class ShoppingCartTest {
     private ShoppingCartPage shoppingCartPage;
 
@@ -36,7 +40,7 @@ public class ShoppingCartTest {
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assertions.assertEquals(expectedUrl, currentUrl);
 
-        Assertions.assertTrue(shoppingCartPage.continueShoppingButtonIsDisplayed() && shoppingCartPage.estimateShippingButtonIsDisplayed());
+        assertTrue(shoppingCartPage.continueShoppingButtonIsDisplayed() && shoppingCartPage.estimateShippingButtonIsDisplayed());
     }
 
     @Test(priority = 2)
@@ -78,18 +82,27 @@ public class ShoppingCartTest {
         WebElement confirmButton = Driver.getDriver().findElement(By.xpath("//button[@class='button-1 confirm-order-next-step-button']"));
         confirmButton.click();
 
-        WebElement thankyou = Driver.getDriver().findElement(By.xpath("//h1[contains(text(), 'Thank you')]"));
-        WebElement orderLink = Driver.getDriver().findElement(By.xpath("//a[text()='Click here for order details.']"));
+        WebElement orderSuccess = Driver.getDriver().findElement(By.xpath("//*[@id=\"main\"]/div/div/div/div[2]/div/div[1]/strong"));
+        Assertions.assertEquals(orderSuccess.getText(),"Your order has been successfully processed!");
 
-        Assertions.assertEquals(thankyou.getText(),"Thank you");
-        Assertions.assertEquals(orderLink.getText(),"Click here for order details.");
+
+        WebElement orderNumber = Driver.getDriver().findElement(By.xpath("//*[@id=\"main\"]/div/div/div/div[2]/div/div[2]/div[1]/strong"));
+        String actual = orderNumber.getText();
+        String pattern = "ORDER NUMBER: \\d+";
+
+        assertMatchesPattern(pattern, actual);
 
     }
 
     @AfterTest
     public void closeDashboard(){
         Driver.getDriver().close();
-    }
+   }
 
+    private void assertMatchesPattern(String regex, String actual) {
+        Pattern pattern = Pattern.compile(regex);
+        boolean matches = pattern.matcher(actual).matches();
+        assertTrue(matches);
+    }
 
 }
