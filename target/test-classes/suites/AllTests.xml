@@ -15,6 +15,7 @@
             <class name="selenium.training.tests.LoginTest">
                 <methods>
                     <include name="successfulLoginTest" />
+                    <include name="thisWillFail" />
                 </methods>
             </class>
             <class name="selenium.training.tests.DashboardTest">

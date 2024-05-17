@@ -47,11 +47,5 @@ public class DashboardTest {
         Assert.assertEquals(numriShopping.getText(),"(3)");
     }
 
-    @AfterTest
-    public void closeDashboard(){
-        Driver.getDriver().close();
-    }
-
-
 
 }

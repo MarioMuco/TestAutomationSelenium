@@ -27,9 +27,5 @@ public class RegisterTest {
         logout.click();
     }
 
-    @AfterTest
-    public void closeRegister(){
-        Driver.getDriver().close();
-    }
 
 }

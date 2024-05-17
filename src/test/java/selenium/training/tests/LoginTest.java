@@ -27,9 +27,9 @@ public class LoginTest {
         Assert.assertEquals("Log out",logout.getText());
     }
 
-    @AfterTest
-    public void closeRegister(){
-        Driver.getDriver().close();
+    @Test
+    public void thisWillFail() {
+        Assert.fail();
     }
 
 }
