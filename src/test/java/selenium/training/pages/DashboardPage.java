@@ -50,14 +50,17 @@ public class DashboardPage extends BasePage {
 
     public void addShopping() throws InterruptedException {
         shoppingButton4.click();
+        Thread.sleep(1000);
         Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
-        Thread.sleep(2000);
+
         shoppingButton5.click();
+        Thread.sleep(1000);
         Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
-        Thread.sleep(2000);
+
         shoppingButton6.click();
+        Thread.sleep(1000);
         Driver.getWait().until(ExpectedConditions.elementToBeClickable(close)).click();
-        Thread.sleep(2000);
+
     }
 
 }

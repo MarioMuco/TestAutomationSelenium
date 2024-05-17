@@ -24,7 +24,7 @@ public class DashboardTest {
 
     @Test(priority = 1)
     public void successfulNotebooks() {
-        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
+        //loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
         dashboardPage.navigateNotebooks();
 
         WebElement notebookConfirm = Driver.getDriver().findElement(By.xpath("//h1[contains(text(), 'Notebook')]"));

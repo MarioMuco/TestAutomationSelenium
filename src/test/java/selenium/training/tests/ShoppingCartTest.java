@@ -31,9 +31,9 @@ public class ShoppingCartTest {
 
 
     @Test(priority = 1)
-    public void gotocart(){
-        loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
-        dashboardPage.navigateNotebooks();
+    public void gotocart() throws InterruptedException {
+       // loginPage.login(GlobalConfigs.username, GlobalConfigs.password);
+        //dashboardPage.navigateNotebooks();
         shoppingCartPage.navigateShoppingCart();
 
         String expectedUrl = "https://demo.nopcommerce.com/cart";

@@ -63,7 +63,7 @@ public class ShoppingCartPage extends BasePage{
 
 
 
-    public void navigateShoppingCart() {
+    public void navigateShoppingCart() throws InterruptedException {
         actions.moveToElement(cart).perform();
         gotocart.click();
     }

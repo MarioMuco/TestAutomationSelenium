@@ -1,0 +1,37 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke Tests">
+
+    <listeners>
+        <listener class-name="selenium.training.utils.Listeners"/>
+    </listeners>
+
+    <test name="All Tests">
+        <classes>
+            <class name="selenium.training.tests.RegisterTest">
+                <methods>
+                    <include name="successfulRegisterTest"/>
+                </methods>
+            </class>
+            <class name="selenium.training.tests.LoginTest">
+                <methods>
+                    <include name="successfulLoginTest" />
+                </methods>
+            </class>
+            <class name="selenium.training.tests.DashboardTest">
+                <methods>
+                    <include name="successfulNotebooks" />
+                    <include name="addWishlist" />
+                    <include name="addShoppinglist" />
+                </methods>
+            </class>
+            <class name="selenium.training.tests.ShoppingCartTest">
+                <methods>
+                    <include name="gotocart" />
+                    <include name="totali" />
+                    <include name="checkoutComplete" />
+                    <include name="shippingAdress" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
